@@ -7,7 +7,8 @@ export default class RegistrationPage extends React.Component {
   state = {
     username: '',
     password: '',
-    confirm: ''
+    confirm: '',
+    error: ''
   }
 
   changeFields(event) {
@@ -15,6 +16,27 @@ export default class RegistrationPage extends React.Component {
       [event.target.name]: event.target.value
     })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { username, password, confirm } = this.state;
+    if (password !== confirm) {
+      this.setState({
+        error: 'Password must match confirmation'
+      });
+    } else {
+      this.setState({ error: null });
+      AuthApiService.addUser({username, password})
+      .then(user => {
+        this.setState({
+          
+        });
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      })
+    }
+  };
   
   render() {
     return(
@@ -35,8 +57,12 @@ export default class RegistrationPage extends React.Component {
               <input type="text" name="password" id="password" onChange={event => this.changeFields(event)} />
               <label htmlFor="confirm">Confirm New Password:</label>
               <input type="text" name="confirm" id="confirm" onChange={event => this.changeFields(event)} />
+              <button onClick={event => this.handleSubmit(event)}>Submit</button>
             </fieldset>
           </form>
+          <section className="error-message">
+            {this.state.error}
+          </section>
         </main>
       </>
     );
