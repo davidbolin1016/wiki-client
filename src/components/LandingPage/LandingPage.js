@@ -4,7 +4,7 @@ import './LandingPage.css';
 export default class LandingPage extends React.Component {
   render() {
     return(
-      <body>
+      <>
         <nav role="navigation">
           <a href="#">Create Account</a>
           <a href="#">Sign In</a>
@@ -17,7 +17,7 @@ export default class LandingPage extends React.Component {
             Organize your ideas with a personal wiki. By default, a page will automatically be linked when other pages contain references to the name of the page, eliminating the need to remember to add each individual link.
           </section>
         </main>
-      </body>
+      </>
     );
   }
 }
