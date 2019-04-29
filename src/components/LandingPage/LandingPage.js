@@ -8,7 +8,7 @@ export default class LandingPage extends React.Component {
       <>
         <nav role="navigation">
           <Link to="/register">Create Account</Link>
-          <a href="#">Sign In</a>
+          <Link to="/login">Sign In</Link>
         </nav>
         <main role="main">
           <header role="banner">
