@@ -4,6 +4,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import './App.css';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import SignIn from '../SignIn/SignIn';
+import PersonalPage from '../PersonalPage/PersonalPage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route exact path={'/'} component={LandingPage} />
       <Route path={'/register'} component={RegistrationPage} />
       <Route path={'/login'} component={SignIn} /> 
+      <Route path={'/pages/:page'} component={PersonalPage} />
     </>
   );
 }
