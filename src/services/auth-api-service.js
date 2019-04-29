@@ -13,7 +13,7 @@ const AuthApiService = {
         (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
       )
   },
-  postUser(user) {
+  addUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {
@@ -27,4 +27,4 @@ const AuthApiService = {
   }
 }
 
-export default AuthApiService
+export default AuthApiService;

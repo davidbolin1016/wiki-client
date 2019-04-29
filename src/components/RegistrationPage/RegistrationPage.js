@@ -1,14 +1,29 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './RegistrationPage.css';
+import AuthApiService from '../../services/auth-api-service';
 
 export default class RegistrationPage extends React.Component {
-  
-  state = {
-    username: '',
-    password: '',
-    confirm: '',
-    error: ''
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+      confirm: '',
+      error: ''
+    }
+  }
+
+  _isMounted = false;
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   changeFields(event) {
@@ -19,22 +34,30 @@ export default class RegistrationPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const history = this.props.history;
     const { username, password, confirm } = this.state;
     if (password !== confirm) {
       this.setState({
         error: 'Password must match confirmation'
       });
     } else {
-      this.setState({ error: null });
-      AuthApiService.addUser({username, password})
+      if (this._isMounted) {
+        this.setState({ error: null });
+      }
+      
+      AuthApiService.addUser({
+        username: username,
+        password: password
+      })
       .then(user => {
-        this.setState({
-          
-        });
+        console.log('need login)'); // temporary until I am done with login
       })
       .catch(res => {
-        this.setState({ error: res.error });
+        if (this._isMounted) {
+          this.setState({ error: res.error });
+        }
       })
+      history.push('/');
     }
   };
   
