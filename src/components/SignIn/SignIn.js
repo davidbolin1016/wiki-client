@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './SignIn.css';
 import AuthApiService from '../../services/auth-api-service';
+import TokenService from '../../services/token-service';
 
 export default class SignIn extends React.Component {
 
@@ -19,8 +20,20 @@ export default class SignIn extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
-  };
+    this.setState({ error: '' });
+    const { username, password } = this.state;
+    AuthApiService.postLogin({
+        username: username,
+        password: password
+      })
+        .then(res => {
+          TokenService.saveAuthToken(res.authToken);
+          console.log('logged in now');
+        })
+        .catch(res => {
+          this.setState({ error: res.error});
+        });
+    }
   
   render() {
     return(
