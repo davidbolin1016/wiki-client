@@ -1,3 +1,7 @@
+# Automated Personal Wiki
+
+An app to aid in linking between ideas, projects, tasks, and so on. A tool to create a personal wiki where the title of each page becomes a link from equivalent text on other pages.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
