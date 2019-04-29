@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import LandingPage from '../LandingPage/LandingPage';
 import './App.css';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
@@ -6,8 +7,8 @@ import RegistrationPage from '../RegistrationPage/RegistrationPage';
 function App() {
   return (
     <>
-      <LandingPage exact path={'/'} />
-      <RegistrationPage path={'/register'} />
+      <Route exact path={'/'} component={LandingPage} />
+      <Route path={'/register'} component={RegistrationPage} />
     </>
   );
 }

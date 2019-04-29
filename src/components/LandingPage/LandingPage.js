@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './LandingPage.css';
 
 export default class LandingPage extends React.Component {
@@ -6,7 +7,7 @@ export default class LandingPage extends React.Component {
     return(
       <>
         <nav role="navigation">
-          <a href="#">Create Account</a>
+          <Link to="/register">Create Account</Link>
           <a href="#">Sign In</a>
         </nav>
         <main role="main">
