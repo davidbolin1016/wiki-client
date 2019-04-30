@@ -52,6 +52,20 @@ const PageApiService = {
         console.log(res);
         return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res }
       );
+  },
+
+  updatePage(id, updates) {
+    return fetch(`${config.API_ENDPOINT}/pages/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: updates
+    })
+      .then(res => {
+        console.log(res);
+        return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res });
   }
 }
 

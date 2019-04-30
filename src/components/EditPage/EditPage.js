@@ -30,16 +30,16 @@ export default class NewPage extends React.Component {
     this.props.history.goBack();
   }
 
-  // save = () => {
-  //   PageApiService.submitPage({
-  //     page_name: this.state.title,
-  //     page_content: this.state.content
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //       this.props.history.push(`/pages/${res.page_id}`);
-  //     });
-  // }
+  save = () => {
+    const pageId = this.props.match.params.page;
+    PageApiService.updatePage(pageId, {
+      page_name: this.state.title,
+      page_content: this.state.content
+    })
+      .then(() => {
+        this.props.history.push(`/pages/${pageId}`);
+      });
+  }
 
   changeFields(event) {
     this.setState({
