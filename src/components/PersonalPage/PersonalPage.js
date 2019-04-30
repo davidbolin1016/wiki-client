@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './PersonalPage.css';
+import PageApiService from '../../services/page-api-service';
 
 export default class PersonalPage extends React.Component {
   
@@ -10,7 +11,15 @@ export default class PersonalPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch()
+    const pageId = this.props.match.params.page;
+    PageApiService.getPage(pageId)
+      .then(page => {
+        const { page_name, page_content } = page[0];
+        this.setState({
+          title: page_name,
+          content: page_content
+        });
+      });
   }
 
   render() {
@@ -21,10 +30,10 @@ export default class PersonalPage extends React.Component {
         </nav>
         <main role="main">
           <header role="banner">
-            Personal Home Page
+            {this.state.title}
           </header>
           <section>
-            Personal text will go here.
+            {this.state.content}
           </section>
         </main>
       </>
