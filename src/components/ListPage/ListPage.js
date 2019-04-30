@@ -11,7 +11,6 @@ export default class ListPage extends React.Component {
   componentDidMount() {
     PageApiService.getPageList()
       .then(list => {
-        console.log(list, typeof list);
         this.setState( {
           pageList: list
         });
@@ -21,9 +20,9 @@ export default class ListPage extends React.Component {
   render() {
     const pageList = this.state.pageList;
     console.log(pageList.length);
-    const listElements = pageList.map(ele => {
+    const listElements = pageList.map((ele, i) => {
       return (
-        <li>
+        <li key={ele.id}>
           <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
           <button>Edit</button>
           <button>Delete</button>
