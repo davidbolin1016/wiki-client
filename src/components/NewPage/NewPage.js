@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageApiService from '../../services/page-api-service';
 
 export default class NewPage extends React.Component {
   
@@ -13,7 +14,14 @@ export default class NewPage extends React.Component {
   }
 
   save = () => {
-    
+    PageApiService.submitPage({
+      page_name: this.state.title,
+      page_content: this.state.content
+    })
+      .then((res) => {
+        console.log(res);
+        this.props.history.push(`/pages/${res.page_id}`);
+      });
   }
 
   changeFields(event) {

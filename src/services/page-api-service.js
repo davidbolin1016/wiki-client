@@ -14,8 +14,17 @@ const PageApiService = {
       );
     },
   submitPage(page) {
-    
-  }
-};
+    return fetch(`${config.API_ENDPOINT}/pages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(page)
+    })
+      .then(res => {
+        return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json() }
+      );
+    }}
 
 export default PageApiService;
