@@ -49,7 +49,8 @@ const PageApiService = {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }})
       .then(res => {
-        return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json() }
+        console.log(res);
+        return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res }
       );
   }
 }

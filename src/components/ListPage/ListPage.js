@@ -8,6 +8,16 @@ export default class ListPage extends React.Component {
     pageList: []
   }
 
+  handleDelete = (id) => {
+    PageApiService.deletePage(id)
+      .then(() => {
+        const newPageList = this.state.pageList.filter(ele => ele.id !== id);
+        this.setState({
+          pageList: newPageList
+        });
+      })
+  }
+
   componentDidMount() {
     PageApiService.getPageList()
       .then(list => {
@@ -25,7 +35,7 @@ export default class ListPage extends React.Component {
         <li key={ele.id}>
           <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => this.handleDelete(ele.id)}>Delete</button>
         </li>
       );
     });
@@ -38,7 +48,7 @@ export default class ListPage extends React.Component {
       <main role="main">
         <header role="banner">
           <h1>Page List</h1>
-          <h2>Ordering by most recent edit</h2>
+          <h2>Ordering by oldest created</h2>
           <h3><a href="#">(change)</a></h3>
         </header>
         <section>
