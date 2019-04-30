@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import './PersonalPage.css';
 
 export default class PersonalPage extends React.Component {
+  
+  state = {
+    title: '',
+    content: ''
+  }
+
+  componentDidMount() {
+    fetch()
+  }
+
   render() {
     return(
       <>
