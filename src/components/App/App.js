@@ -5,6 +5,7 @@ import './App.css';
 import RegistrationPage from '../RegistrationPage/RegistrationPage';
 import SignIn from '../SignIn/SignIn';
 import PersonalPage from '../PersonalPage/PersonalPage';
+import LogOut from '../LogOut/LogOut';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path={'/register'} component={RegistrationPage} />
       <Route path={'/login'} component={SignIn} /> 
       <Route path={'/pages/:page'} component={PersonalPage} />
+      <Route path={'/logout'} component={LogOut} />
     </>
   );
 }
