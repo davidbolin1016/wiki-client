@@ -1,7 +1,35 @@
 import React from 'react';
+import PageApiService from '../../services/page-api-service';
+import { Link } from 'react-router-dom';
 
 export default class ListPage extends React.Component {
+  
+  state = {
+    pageList: []
+  }
+
+  componentDidMount() {
+    PageApiService.getPageList()
+      .then(list => {
+        console.log(list, typeof list);
+        this.setState( {
+          pageList: list
+        });
+      });
+  }
+  
   render() {
+    const pageList = this.state.pageList;
+    console.log(pageList.length);
+    const listElements = pageList.map(ele => {
+      return (
+        <li>
+          <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+      );
+    });
     return (
      <>
       <nav role="navigation">
@@ -16,18 +44,7 @@ export default class ListPage extends React.Component {
         </header>
         <section>
          <ul>
-          <li>
-           <a href="#">Peaches</a><button>Edit</ button><button>Delete</button>
-          </li>
-          <li>
-            <a href="#">New Page 4/23/2019 4:02 PM</a><button>Edit</button><button>Delete</button>
-          </li>
-          <li>
-            <a href="#">Apples</a><button>Edit</button><button>Delete</button>
-          </li>
-          <li>
-            <a href="#">Personal Home Page</a><button>Edit</button><button>Delete</button>
-          </li>
+          {listElements}
         </ul>
         </section>
       </main>
