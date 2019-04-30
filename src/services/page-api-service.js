@@ -55,13 +55,14 @@ const PageApiService = {
   },
 
   updatePage(id, updates) {
+    console.log(id, updates);
     return fetch(`${config.API_ENDPOINT}/pages/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: updates
+      body: JSON.stringify(updates)
     })
       .then(res => {
         console.log(res);
