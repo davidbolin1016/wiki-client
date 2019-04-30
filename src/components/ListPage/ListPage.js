@@ -18,6 +18,10 @@ export default class ListPage extends React.Component {
       })
   }
 
+  handleEdit = (id) => {
+    this.props.history.push(`/edit/${id}`);
+  }
+
   componentDidMount() {
     PageApiService.getPageList()
       .then(list => {
@@ -34,7 +38,7 @@ export default class ListPage extends React.Component {
       return (
         <li key={ele.id}>
           <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
-          <button>Edit</button>
+          <button onClick={() => this.handleEdit(ele.id)}>Edit</button>
           <button onClick={() => this.handleDelete(ele.id)}>Delete</button>
         </li>
       );

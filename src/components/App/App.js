@@ -8,6 +8,7 @@ import PersonalPage from '../PersonalPage/PersonalPage';
 import LogOut from '../LogOut/LogOut';
 import NewPage from '../NewPage/NewPage';
 import ListPage from '../ListPage/ListPage';
+import EditPage from '../EditPage/EditPage';
 
 class App extends React.Component {
   
@@ -21,6 +22,7 @@ class App extends React.Component {
         <Route path={'/logout'} component={LogOut} />
         <Route path={'/newpage'} component={NewPage} />
         <Route path={'/list'} component={ListPage} />
+        <Route path={'/edit/:page'} component={EditPage} />
       </>
     );
   }
