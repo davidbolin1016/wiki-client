@@ -27,6 +27,7 @@ export default class PersonalPage extends React.Component {
       <>
         <nav role="navigation">
           <Link to="/logout">Log out</Link>
+          <Link to="/newpage">New Page</Link>
         </nav>
         <main role="main">
           <header role="banner">

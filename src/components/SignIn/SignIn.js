@@ -27,6 +27,7 @@ export default class SignIn extends React.Component {
         password: password
       })
         .then(res => {
+          console.log('got here');
           TokenService.saveAuthToken(res.authToken);
           const home_page_id = res.homepage;
           this.props.history.push(`/pages/${home_page_id}`);

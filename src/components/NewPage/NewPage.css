@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: black;
+  font-family: "Open Sans", sans-serif; 
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+nav {
+  padding: 1% 0;
+  background-color: #aaa;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+header {
+  padding: 12% 0;
+}
+
+textarea {
+  height: 400px;
+  background-color: white;
+  border: 2px solid black;
+  width: 100%;
+}
+
+
