@@ -7,17 +7,9 @@ import SignIn from '../SignIn/SignIn';
 import PersonalPage from '../PersonalPage/PersonalPage';
 import LogOut from '../LogOut/LogOut';
 import NewPage from '../NewPage/NewPage';
+import ListPage from '../ListPage/ListPage';
 
 class App extends React.Component {
-  state = {
-    homepage: null
-  }
-
-  setHomePage = (id) => {
-    this.setState({
-      homepage: id
-    })
-  };
   
   render() {
     return (
@@ -28,6 +20,7 @@ class App extends React.Component {
         <Route path={'/pages/:page'} component={PersonalPage} />
         <Route path={'/logout'} component={LogOut} />
         <Route path={'/newpage'} component={NewPage} />
+        <Route path={'/list'} component={ListPage} />
       </>
     );
   }
