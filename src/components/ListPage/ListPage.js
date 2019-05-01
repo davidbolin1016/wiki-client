@@ -45,10 +45,6 @@ export default class ListPage extends React.Component {
     });
     return (
      <>
-      <nav role="navigation">
-       <a href="#">Home</a>
-       <a href="#">Log out</a>
-      </nav>
       <main role="main">
         <header role="banner">
           <h1>Page List</h1>

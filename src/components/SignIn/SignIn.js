@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './SignIn.css';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
+import UserContext from '../../user-context/UserContext';
 
 export default class SignIn extends React.Component {
 
@@ -11,6 +12,8 @@ export default class SignIn extends React.Component {
     password: '',
     error: ''
   }
+
+  static contextType = UserContext;
 
   changeFields(event) {
     this.setState({
@@ -27,9 +30,9 @@ export default class SignIn extends React.Component {
         password: password
       })
         .then(res => {
-          console.log('got here');
           TokenService.saveAuthToken(res.authToken);
           const home_page_id = res.homepage;
+          this.context.setUser(`/pages/${home_page_id}`, username);
           this.props.history.push(`/pages/${home_page_id}`);
         })
         .catch(res => {
@@ -40,9 +43,6 @@ export default class SignIn extends React.Component {
   render() {
     return(
       <>
-        <nav role="navigation">
-          <Link to="/">Home</Link>
-        </nav>
         <main role="main">
           <header role="banner">
             Automated Personal Wiki

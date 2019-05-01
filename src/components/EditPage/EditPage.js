@@ -50,10 +50,6 @@ export default class NewPage extends React.Component {
   render() {
     return (
       <>
-        <nav role="navigation">
-          <a href="#">Home</a>
-          <Link to='/logout'>Log out</Link>
-        </nav>
         <main role="main">
           <header role="banner">
             <form>

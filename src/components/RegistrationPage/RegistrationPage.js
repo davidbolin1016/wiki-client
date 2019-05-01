@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './RegistrationPage.css';
 import AuthApiService from '../../services/auth-api-service';
+import UserContext from '../../user-context/UserContext';
+import TokenService from '../../services/token-service';
 
 export default class RegistrationPage extends React.Component {
 
@@ -17,6 +19,8 @@ export default class RegistrationPage extends React.Component {
   }
 
   _isMounted = false;
+
+  static contextType = UserContext;
 
   componentDidMount() {
     this._isMounted = true;
@@ -50,23 +54,34 @@ export default class RegistrationPage extends React.Component {
         password: password
       })
       .then(user => {
-        console.log('need login)'); // temporary until I am done with login
+        this.setState({ error: '' });
+        const { username, password } = this.state;
+        AuthApiService.postLogin({
+          username: username,
+          password: password
+         })
+          .then(res => {
+            TokenService.saveAuthToken(res.authToken);
+            const home_page_id = res.homepage;
+            this.context.setUser(`/pages/${home_page_id}`, username);
+            this.props.history.push(`/pages/${home_page_id}`);
+         })
+         .catch(res => {
+            this.setState({ error: res.error});
+         });
       })
       .catch(res => {
         if (this._isMounted) {
           this.setState({ error: res.error });
         }
       })
-      history.push('/');
+      history.push(this.context.homepage);
     }
   };
   
   render() {
     return(
       <>
-        <nav role="navigation">
-          <Link to="/">Home</Link>
-        </nav>
         <main role="main">
           <header role="banner">
             Automated Personal Wiki

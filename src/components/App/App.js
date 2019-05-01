@@ -9,12 +9,30 @@ import LogOut from '../LogOut/LogOut';
 import NewPage from '../NewPage/NewPage';
 import ListPage from '../ListPage/ListPage';
 import EditPage from '../EditPage/EditPage';
+import NavBar from '../NavBar/NavBar';
+import UserContext from '../../user-context/UserContext';
 
 class App extends React.Component {
+
+  state = {
+    homepage: '/',
+    username: null
+  }
+
+  setUser = (homepage, username) => {
+    this.setState({
+      homepage, username
+    });
+  }
   
   render() {
     return (
-      <>
+      <UserContext.Provider value={{
+        homepage: this.state.homepage,
+        username: this.state.username,
+        setUser: this.setUser
+      }}>
+        <NavBar />
         <Route exact path={'/'} component={LandingPage} />
         <Route path={'/register'} component={RegistrationPage} />
         <Route path={'/login'} component ={SignIn} /> 
@@ -23,7 +41,7 @@ class App extends React.Component {
         <Route path={'/newpage'} component={NewPage} />
         <Route path={'/list'} component={ListPage} />
         <Route path={'/edit/:page'} component={EditPage} />
-      </>
+      </UserContext.Provider>
     );
   }
 }
