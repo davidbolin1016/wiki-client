@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './RegistrationPage.css';
 import AuthApiService from '../../services/auth-api-service';
 import UserContext from '../../user-context/UserContext';

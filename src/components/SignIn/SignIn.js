@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './SignIn.css';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';

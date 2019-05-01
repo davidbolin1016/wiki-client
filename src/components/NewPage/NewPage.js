@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PageApiService from '../../services/page-api-service';
 
 export default class NewPage extends React.Component {
