@@ -1,11 +1,45 @@
 import React from 'react';
 import PageApiService from '../../services/page-api-service';
 import { Link } from 'react-router-dom';
+import './ListPage.css';
 
 export default class ListPage extends React.Component {
   
   state = {
-    pageList: []
+    pageList: [],
+    sort: {
+      by: 'date_modified',
+      sign: -1
+    }
+  }
+
+  changeOrder(event) {
+    const newSort = {};
+    switch(event.target.value) {
+      case 'Most Recently Modified':
+        newSort.by = 'date_modified';
+        newSort.sign = -1;
+        break;
+      case 'Least Recently Modified':
+        newSort.by = 'date_modified';
+        newSort.sign = 1;
+        break;
+      case 'Most Recently Created':
+        newSort.by = 'date_created';
+        newSort.sign = -1;
+        break;
+      case 'Least Recently Created':
+        newSort.by = 'date_created';
+        newSort.sign = 1;
+        break;
+      default:
+        newSort.by = 'date_modified';
+        newSort.sign = -1;
+    }
+
+    this.setState({
+      sort: newSort
+    });
   }
 
   handleDelete = (id) => {
@@ -32,8 +66,17 @@ export default class ListPage extends React.Component {
   }
   
   render() {
-    const pageList = this.state.pageList;
-    console.log(pageList.length);
+
+    const pageList = this.state.pageList.sort((page1, page2) => {
+      const date1 = page1[this.state.sort.by];
+      const date2 = page2[this.state.sort.by];
+      if (date1 > date2) {
+        return 1 * this.state.sort.sign
+      } else {
+        return -1 * this.state.sort.sign
+      }
+    });
+
     const listElements = pageList.map((ele, i) => {
       return (
         <li key={ele.id}>
@@ -47,9 +90,14 @@ export default class ListPage extends React.Component {
      <>
       <main role="main">
         <header role="banner">
-          <h1>Page List</h1>
-          <h2>Ordering by oldest created</h2>
-          <h3><a href="#">(change)</a></h3>
+          Page List<br/>
+          Ordering by<br/>
+          <select onChange={(event) => this.changeOrder(event)}>
+            <option>Most Recently Modified</option>
+            <option>Least Recently Modified</option>
+            <option>Most Recently Created</option>
+            <option>Least Recently Created</option>
+          </select>
         </header>
         <section>
          <ul>
