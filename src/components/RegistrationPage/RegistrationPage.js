@@ -91,9 +91,9 @@ export default class RegistrationPage extends React.Component {
               <label htmlFor="username">New Username:</label>
               <input type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
               <label htmlFor="password">New Password:</label>
-              <input type="text" name="password" id="password" onChange={event => this.changeFields(event)} />
+              <input type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
               <label htmlFor="confirm">Confirm New Password:</label>
-              <input type="text" name="confirm" id="confirm" onChange={event => this.changeFields(event)} />
+              <input type="password" name="confirm" id="confirm" onChange={event => this.changeFields(event)} />
               <button onClick={event => this.handleSubmit(event)}>Submit</button>
             </fieldset>
           </form>
