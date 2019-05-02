@@ -36,6 +36,33 @@ export default class PersonalPage extends React.Component {
   render() {
     const pageId = this.props.match.params.page;
 
+    //structure will be ...text...<IntLink ##>...text...<IntLink />...text
+
+    const dividedContent = this.state.content.split('<IntLink ');
+    let content = [
+      <Link to={`/edit/${pageId}`}>
+        {dividedContent[0]}
+      </Link>
+    ];
+
+    //text, ##>text, />text , ##>text, />text etc
+
+    for (let i = 1; i < dividedContent.length; i = i + 2) {
+      const linkedPageId = dividedContent[i].split('>')[0];
+      const linkText = dividedContent[i].slice(linkedPageId.length + 1)
+    
+      const postText = dividedContent[i + 1].slice(2)
+      
+      content.push(
+        <Link className="int-link" to={`/pages/${linkedPageId}`}>
+          {linkText}
+        </Link>,
+        <Link to={`/edit/${pageId}`}>
+          {postText}
+        </Link>
+      );  
+    }
+
     return(
       <>
         <main role="main">
@@ -45,9 +72,7 @@ export default class PersonalPage extends React.Component {
             </Link> 
           </header>
           <section>
-            <Link to={`/edit/${pageId}`}>
-              {this.state.content}
-            </Link>  
+              {content}
           </section>
         </main>
       </>

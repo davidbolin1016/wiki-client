@@ -11,6 +11,7 @@ import ListPage from '../ListPage/ListPage';
 import EditPage from '../EditPage/EditPage';
 import NavBar from '../NavBar/NavBar';
 import UserContext from '../../user-context/UserContext';
+import AuthApiService from '../../services/auth-api-service';
 
 class App extends React.Component {
 
@@ -25,6 +26,18 @@ class App extends React.Component {
     });
   }
   
+  componentDidMount() {
+    AuthApiService.whoamI()
+      .then(user => {
+        if (this.state.username !== user.username) {
+          this.setState({
+            homepage: `/pages/${user.home_page_id}`,
+            username: user.username
+          });
+        }
+      })
+  }
+
   render() {
     return (
       <UserContext.Provider value={{

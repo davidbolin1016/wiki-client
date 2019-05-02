@@ -1,3 +1,7 @@
 a {
   text-decoration: none;
 }
+
+.int-link {
+  text-decoration: underline;
+}
