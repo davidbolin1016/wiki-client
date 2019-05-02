@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: 'http://localhost:8000/api',
+  API_ENDPOINT: 'https://sheltered-everglades-14095.herokuapp.com/api',
   TOKEN_KEY: 'token-for-wiki-client'
 }
