@@ -1,4 +1,5 @@
 import React from 'react';
+import './NavBar.css';
 import UserContext from '../../user-context/UserContext';
 import { Link } from 'react-router-dom';
 
