@@ -10,7 +10,14 @@ export default class ListPage extends React.Component {
     sort: {
       by: 'date_modified',
       sign: -1
-    }
+    },
+    filterTerm: ''
+  }
+
+  changeFilter(event) {
+      this.setState({
+        filterTerm: event.target.value
+      })
   }
 
   changeOrder(event) {
@@ -75,7 +82,7 @@ export default class ListPage extends React.Component {
       } else {
         return -1 * this.state.sort.sign
       }
-    });
+    }).filter(ele => ele.page_name.includes(this.state.filterTerm));
 
     const listElements = pageList.map((ele, i) => {
       return (
@@ -86,10 +93,11 @@ export default class ListPage extends React.Component {
         </li>
       );
     });
+
     return (
      <>
       <main role="main">
-        <header role="banner">
+        <header role="banner" className="list-header">
           Page List<br/>
           Ordering by<br/>
           <select onChange={(event) => this.changeOrder(event)}>
@@ -98,6 +106,8 @@ export default class ListPage extends React.Component {
             <option>Most Recently Created</option>
             <option>Least Recently Created</option>
           </select>
+          <label htmlFor="filter-term">Filter By:</label>
+          <input type="text" name="filter-term" id="filter-term" value={this.state.filterTerm} onChange={event => this.changeFilter(event)}></input>
         </header>
         <section>
          <ul>
