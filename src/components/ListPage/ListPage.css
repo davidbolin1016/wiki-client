@@ -12,3 +12,12 @@ li {
   list-style: none;
   border: 1px solid black;
 }
+
+section {
+  min-height: 20px;
+  padding: 20px;
+}
+
+input[type="submit"], input[type="reset"] {
+  background-color: lightgreen;
+}

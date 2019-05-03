@@ -12,7 +12,9 @@ export default class ListPage extends React.Component {
       by: 'date_modified',
       sign: -1
     },
-    filterTerm: ''
+    filterTerm: '',
+    searchTerm: '',
+    currentlySearching: false
   }
 
   static contextType = UserContext;
@@ -21,6 +23,12 @@ export default class ListPage extends React.Component {
       this.setState({
         filterTerm: event.target.value
       })
+  }
+
+  changeSearch(event) {
+    this.setState({
+      searchTerm: event.target.value
+    });
   }
 
   changeOrder(event) {
@@ -74,15 +82,46 @@ export default class ListPage extends React.Component {
     this.props.history.push(`/edit/${id}`);
   }
 
-  componentDidMount() {
+  handleSearch = (e) => {
+    e.preventDefault();
+    this.setState({
+      currentlySearching: true
+    });
+  }
+
+  handleReset = (e) => {
+    e.preventDefault();
     PageApiService.getPageList()
+      .then(list => {
+        this.setState( {
+          pageList: list,
+          searchTerm: '',
+          currentlySearching: false
+        });
+      }); 
+  }
+
+  componentDidMount() {
+      PageApiService.getPageList()
       .then(list => {
         this.setState( {
           pageList: list
         });
-      });
+      }); 
   }
   
+  componentDidUpdate() {
+    if(this.state.currentlySearching) {
+      PageApiService.getSearchedList(this.state.searchTerm)
+        .then(list => {
+          this.setState({
+            pageList: list,
+            currentlySearching: false
+          });
+        });
+    }
+  }
+
   render() {
     let pageList;
 
@@ -135,6 +174,15 @@ export default class ListPage extends React.Component {
           <label htmlFor="filter-term">Filter By:</label>
           <input type="text" name="filter-term" id="filter-term" value={this.state.filterTerm} onChange={event => this.changeFilter(event)}></input>
         </header>
+        <section>
+          <form onSubmit={event => this.handleSearch(event)} onReset={event => this.handleReset(event)}>
+            <label htmlFor="search-term">Search Full Content:</label>
+            <input type="text" name="search-term" id="search-term" value={this.state.searchTerm} onChange={event => this.changeSearch(event)}></input>
+            <input type="submit"></input>
+            <input type="reset" value="Clear" ></input>
+          </form>
+          {this.state.currentlySearching && 'Searching...'}
+        </section>
         <section>
          <ul>
           {listElements}
