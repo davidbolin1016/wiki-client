@@ -39,6 +39,14 @@ export default class ListPage extends React.Component {
         newSort.by = 'date_created';
         newSort.sign = 1;
         break;
+      case 'Alphabetical':
+        newSort.by = 'alphabetical';
+        newSort.sign = 1;
+        break;
+      case 'Reverse Alphabetical':
+        newSort.by = 'alphabetical';
+        newSort.sign = -1;
+        break;
       default:
         newSort.by = 'date_modified';
         newSort.sign = -1;
@@ -73,16 +81,29 @@ export default class ListPage extends React.Component {
   }
   
   render() {
+    let pageList;
 
-    const pageList = this.state.pageList.sort((page1, page2) => {
-      const date1 = page1[this.state.sort.by];
-      const date2 = page2[this.state.sort.by];
-      if (date1 > date2) {
-        return 1 * this.state.sort.sign
-      } else {
-        return -1 * this.state.sort.sign
-      }
-    }).filter(ele => ele.page_name.includes(this.state.filterTerm));
+    if (this.state.sort.by !== 'alphabetical') {
+      pageList = this.state.pageList.sort((page1, page2) => {
+        const date1 = page1[this.state.sort.by];
+        const date2 = page2[this.state.sort.by];
+        if (date1 > date2) {
+          return this.state.sort.sign;
+        } else {
+          return -this.state.sort.sign;
+       }
+      });
+    } else {
+      pageList = this.state.pageList.sort((page1, page2) => {
+        if (page1.page_name > page2.page_name) {
+          return this.state.sort.sign;
+        } else {
+          return -this.state.sort.sign;
+        }
+      });
+    }   
+
+    pageList = pageList.filter(ele => ele.page_name.includes(this.state.filterTerm));
 
     const listElements = pageList.map((ele, i) => {
       return (
@@ -105,6 +126,8 @@ export default class ListPage extends React.Component {
             <option>Least Recently Modified</option>
             <option>Most Recently Created</option>
             <option>Least Recently Created</option>
+            <option>Alphabetical</option>
+            <option>Reverse Alphabetical</option>
           </select>
           <label htmlFor="filter-term">Filter By:</label>
           <input type="text" name="filter-term" id="filter-term" value={this.state.filterTerm} onChange={event => this.changeFilter(event)}></input>
