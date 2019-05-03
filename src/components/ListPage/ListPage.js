@@ -122,7 +122,7 @@ export default class ListPage extends React.Component {
      <>
       <main role="main">
         <header role="banner" className="list-header">
-          Page List<br/>
+          Page List<br />
           Ordering by
           <select onChange={(event) => this.changeOrder(event)}>
             <option>Most Recently Modified</option>
