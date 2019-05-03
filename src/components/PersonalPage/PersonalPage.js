@@ -56,7 +56,7 @@ export default class PersonalPage extends React.Component {
 
     const dividedContent = this.state.content.split('<IntLink ');
     let content = [
-      <Link key={pageId} to={`/edit/${pageId}`}>
+      <Link key="0" to={`/edit/${pageId}`}>
         {dividedContent[0]}
       </Link>
     ];
@@ -70,10 +70,10 @@ export default class PersonalPage extends React.Component {
       const postText = dividedContent[i + 1].slice(2)
       
       content.push(
-        <Link className="int-link" to={`/pages/${linkedPageId}`}>
+        <Link key={content.length} className="int-link" to={`/pages/${linkedPageId}`}>
           {linkText}
         </Link>,
-        <Link to={`/edit/${pageId}`}>
+        <Link key={content.length + 1} to={`/edit/${pageId}`}>
           {postText}
         </Link>
       );  

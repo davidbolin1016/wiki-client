@@ -2,6 +2,7 @@ import React from 'react';
 import PageApiService from '../../services/page-api-service';
 import { Link } from 'react-router-dom';
 import './ListPage.css';
+import UserContext from '../../user-context/UserContext';
 
 export default class ListPage extends React.Component {
   
@@ -13,6 +14,8 @@ export default class ListPage extends React.Component {
     },
     filterTerm: ''
   }
+
+  static contextType = UserContext;
 
   changeFilter(event) {
       this.setState({
@@ -109,8 +112,8 @@ export default class ListPage extends React.Component {
       return (
         <li key={ele.id}>
           <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
-          <button onClick={() => this.handleEdit(ele.id)}>Edit</button>
-          <button onClick={() => this.handleDelete(ele.id)}>Delete</button>
+          {this.context.homepage !== `/pages/${ele.id}` && <button onClick={() => this.handleDelete(ele.id)}>Delete</button>}
+          <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
         </li>
       );
     });
@@ -120,7 +123,7 @@ export default class ListPage extends React.Component {
       <main role="main">
         <header role="banner" className="list-header">
           Page List<br/>
-          Ordering by<br/>
+          Ordering by
           <select onChange={(event) => this.changeOrder(event)}>
             <option>Most Recently Modified</option>
             <option>Least Recently Modified</option>
