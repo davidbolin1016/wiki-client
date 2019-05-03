@@ -2,12 +2,17 @@ import React from 'react';
 import './PersonalPage.css';
 import PageApiService from '../../services/page-api-service';
 import { Link } from 'react-router-dom';
+import UserContext from '../../user-context/UserContext';
+
 export default class PersonalPage extends React.Component {
   
   state = {
     title: '',
-    content: ''
+    content: '',
+    error: null
   }
+
+  static contextType = UserContext;
 
   componentDidMount() {
     const pageId = this.props.match.params.page;
@@ -17,6 +22,11 @@ export default class PersonalPage extends React.Component {
         this.setState({
           title: page_name,
           content: page_content
+        });
+      })
+      .catch(e => {
+        this.setState({
+          error: e.error
         });
       });
   }
@@ -28,7 +38,13 @@ export default class PersonalPage extends React.Component {
         const { page_name, page_content } = page[0];
         this.setState({
           title: page_name,
-          content: page_content
+          content: page_content,
+          error: null
+        });
+      })
+      .catch(e => {
+        this.setState({
+          error: e.error
         });
       });
   }
@@ -40,7 +56,7 @@ export default class PersonalPage extends React.Component {
 
     const dividedContent = this.state.content.split('<IntLink ');
     let content = [
-      <Link to={`/edit/${pageId}`}>
+      <Link key={pageId} to={`/edit/${pageId}`}>
         {dividedContent[0]}
       </Link>
     ];
@@ -62,20 +78,33 @@ export default class PersonalPage extends React.Component {
         </Link>
       );  
     }
-
-    return(
-      <>
-        <main role="main">
-          <header role="banner">
-            <Link to={`/edit/${pageId}`}>
-              {this.state.title}
-            </Link> 
-          </header>
-          <section>
-              {content}
-          </section>
-        </main>
-      </>
-    );
+    if (!this.state.error) {
+      return(
+        <>
+          <main role="main">
+            <header role="banner">
+              <Link to={`/edit/${pageId}`}>
+                {this.state.title}
+              </Link> 
+            </header>
+            <section>
+                {content}
+            </section>
+          </main>
+        </>
+      );
+    } else {
+      return(
+        <>
+          <main role="main">
+            <header role="banner">
+              <Link to={`${this.context.homepage}`}>
+                {this.state.error}
+              </Link>
+            </header>
+          </main>
+        </>
+      );
+    }
   }
 }

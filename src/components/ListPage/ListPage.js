@@ -97,9 +97,9 @@ export default class ListPage extends React.Component {
       pageList = this.state.pageList.sort((page1, page2) => {
         if (page1.page_name > page2.page_name) {
           return this.state.sort.sign;
-        } else {
-          return -this.state.sort.sign;
         }
+        
+        return -this.state.sort.sign;
       });
     }   
 
