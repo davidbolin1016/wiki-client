@@ -17,7 +17,7 @@ export default class NavBar extends React.Component {
     if (this.context.homepage !== '/') {
       navDiv = (
         <>
-          <Link to="/logout">Log out</Link>
+          <Link to="/logout">Log Out</Link>
           <Link to="/newpage">New Page</Link>
           <Link to="/list">Page List</Link>
         </>
@@ -25,7 +25,10 @@ export default class NavBar extends React.Component {
     } 
     return (
       <nav role="navigation">
-        <Link to={this.context.homepage}>Home</Link>
+        <div>
+          <Link to={"/"}>Automated Personal Wiki</Link>
+        </div>
+        <Link to={this.context.homepage}>Home Page</Link>
         {navDiv}
       </nav>
     );

@@ -19,5 +19,6 @@ section {
 }
 
 input[type="submit"], input[type="reset"] {
+  display: inline;
   background-color: lightgreen;
 }

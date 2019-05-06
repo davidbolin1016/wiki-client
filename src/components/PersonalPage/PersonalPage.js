@@ -87,7 +87,7 @@ export default class PersonalPage extends React.Component {
                 {this.state.title}
               </Link> 
             </header>
-            <section>
+            <section className="page-content">
                 {content}
             </section>
           </main>

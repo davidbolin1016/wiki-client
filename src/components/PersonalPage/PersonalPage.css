@@ -9,3 +9,12 @@ a {
   margin-left: 0;
   margin-right: 0;
 }
+
+header {
+  background-color: rgb(0, 204, 0);
+}
+
+.page-content {
+  background-color: white;
+  text-align: left;
+}

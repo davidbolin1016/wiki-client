@@ -9,7 +9,7 @@ export default class LandingPage extends React.Component {
           <header role="banner">
             Automated Personal Wiki
           </header>
-          <section>
+          <section className="page-content">
             Organize your ideas with a personal wiki. By default, a page will automatically be linked when other pages contain references to the name of the page, eliminating the need to remember to add each individual link.
           </section>
         </main>

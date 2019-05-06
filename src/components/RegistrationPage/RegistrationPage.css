@@ -8,7 +8,7 @@ body {
 
 nav {
   padding: 1% 0;
-  background-color: skyblue;
+  background-color: lightskyblue;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@ nav {
 }
 
 header {
-  padding: 12% 0;
+  padding: 5% 0;
   display: block;
   font-size: 2em;
   font-weight: bold;
@@ -26,5 +26,15 @@ header {
 section {
   min-height: 200px;
   padding: 6% 0;
-  background-color: skyblue;
+  background-color: lightskyblue;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+}
+
+.login-button {
+  float: none;
+  margin-top: 10px;
 }
