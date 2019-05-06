@@ -82,7 +82,7 @@ export default class PersonalPage extends React.Component {
       return(
         <>
           <main role="main">
-            <header role="banner">
+            <header className="sub-header" role="banner">
               <Link to={`/edit/${pageId}`}>
                 {this.state.title}
               </Link> 

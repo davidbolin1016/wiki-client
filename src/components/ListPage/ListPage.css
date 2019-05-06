@@ -1,4 +1,4 @@
-.list-header {
+.sub-header {
   font-size: 1em;
 }
 
@@ -21,4 +21,14 @@ section {
 input[type="submit"], input[type="reset"] {
   display: inline;
   background-color: lightgreen;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+}
+
+select {
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
 }

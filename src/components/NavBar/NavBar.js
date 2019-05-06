@@ -26,7 +26,9 @@ export default class NavBar extends React.Component {
     return (
       <nav role="navigation">
         <div>
-          <Link to={"/"}>Automated Personal Wiki</Link>
+          <strong>
+            <Link to={"/"}>Automated Personal Wiki</Link>
+          </strong>
         </div>
         <Link to={this.context.homepage}>Home Page</Link>
         {navDiv}

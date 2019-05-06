@@ -10,25 +10,25 @@ body {
   line-height: 1.5;
 }
 
-nav {
-  padding: 1% 0;
-  background-color: #aaa;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-header {
-  padding: 12% 0;
-}
-
 textarea {
   height: 400px;
   background-color: white;
   border: 2px solid black;
-  width: 100%;
+  width: 80%;
 }
 
+.save-or-cancel {
+  background-color: white;
+}
 
+.save-or-cancel > button {
+  float:none;
+}
+
+label {
+  font-size: 20px;
+}
+
+#page-title {
+  margin-bottom: 10px;
+}

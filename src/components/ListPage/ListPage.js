@@ -160,9 +160,11 @@ export default class ListPage extends React.Component {
     return (
      <>
       <main role="main">
-        <header role="banner" className="list-header">
-          Page List<br />
-          Ordering by
+        <header role="banner" className="sub-header">
+          Pages
+        </header>
+        <section>
+        Order By
           <select onChange={(event) => this.changeOrder(event)}>
             <option>Most Recently Modified</option>
             <option>Least Recently Modified</option>
@@ -173,7 +175,7 @@ export default class ListPage extends React.Component {
           </select>
           <label htmlFor="filter-term">Filter By:</label>
           <input type="text" name="filter-term" id="filter-term" value={this.state.filterTerm} onChange={event => this.changeFilter(event)}></input>
-        </header>
+        </section>     
         <section>
           <form onSubmit={event => this.handleSearch(event)} onReset={event => this.handleReset(event)}>
             <label htmlFor="search-term">Search Full Content:</label>
