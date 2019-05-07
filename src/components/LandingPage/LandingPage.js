@@ -10,7 +10,7 @@ export default class LandingPage extends React.Component {
             Automated Personal Wiki
           </header>
           <section className="page-content">
-            Organize your ideas with a personal wiki. By default, a page will automatically be linked when other pages contain references to the name of the page, eliminating the need to remember to add each individual link.
+            Organize your ideas with a personal wiki. A link will automatically be generated whenever one page mentions the title of another page, eliminating the need to remember to add links manually.
           </section>
         </main>
       </>

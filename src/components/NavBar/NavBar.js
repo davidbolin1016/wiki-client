@@ -9,12 +9,12 @@ export default class NavBar extends React.Component {
 
   render() {
     let navDiv = [
-      <li>
+      <li className="nav-li">
         <Link to="/register">
           <Emoji symbol="🔨" />Create Account
         </Link>
       </li>,
-      <li>
+      <li className="nav-li">
         <Link to="/login">
           <Emoji symbol="🔑" />Sign In
         </Link>
@@ -23,17 +23,17 @@ export default class NavBar extends React.Component {
 
     if (this.context.homepage !== '/') {
       navDiv = [
-          <li>
+          <li className="nav-li">
             <Link to="/newpage">
               <Emoji symbol="🆕" />New Page
             </Link>
           </li>,
-          <li>
+          <li className="nav-li">
             <Link to="/list">
               <Emoji symbol="📖" />All Pages
             </Link>
           </li>,
-          <li>
+          <li className="nav-li">
             <Link to="/logout">
               <Emoji symbol="🚪" />Logout
             </Link>
@@ -42,13 +42,13 @@ export default class NavBar extends React.Component {
     } 
     return (
       <nav role="navigation">
-        <div className="controls1">
-          <strong>
-            <Link to={"/"}>Automated Personal Wiki</Link>
-          </strong>
-        </div>
-        <ul className="controls2">
-        <li>
+        <ul className="controls">
+          <li>
+            <strong>
+              <Link to={"/"}>Automated Personal Wiki</Link>
+            </strong>
+          </li>
+        <li className="nav-li">
           <Link to={this.context.homepage}>
             <Emoji symbol="🏠" />Home
           </Link>

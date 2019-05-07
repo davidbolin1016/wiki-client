@@ -17,5 +17,8 @@ header {
 
 .page-content {
   background-color: #f7f9f8;
+  margin: auto;
+  max-width: 800px;
   text-align: left;
+  width: 80%;
 }

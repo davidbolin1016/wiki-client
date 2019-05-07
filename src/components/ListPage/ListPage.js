@@ -149,10 +149,12 @@ export default class ListPage extends React.Component {
 
     const listElements = pageList.map((ele, i) => {
       return (
-        <li key={ele.id}>
+        <li className="listed-page" key={ele.id}>
           <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
-          <button disabled={this.context.homepage === `/pages/${ele.id}`} onClick={() => this.handleDelete(ele.id)}>Delete</button>
-          <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
+          <div className="edit-or-delete">
+            <button disabled={this.context.homepage === `/pages/${ele.id}`} onClick={() => this.handleDelete(ele.id)}>Delete</button>
+            <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
+          </div>
         </li>
       );
     });
@@ -186,7 +188,7 @@ export default class ListPage extends React.Component {
           {this.state.currentlySearching && 'Searching...'}
         </section>
         <section>
-         <ul>
+         <ul className="page-list">
           {listElements}
         </ul>
         </section>

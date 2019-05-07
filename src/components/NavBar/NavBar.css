@@ -1,5 +1,4 @@
-nav {
-  display: flex;
+.nav {
   padding: 0;
   position: fixed;
   top: 0;
@@ -12,16 +11,20 @@ nav a {
   color: rgb(218, 229, 219);
 }
 
-.controls1 {
-  display: flex;
+.nav-li {
+  flex-basis: content;
+  list-style: none;
 }
 
-.controls2 {
+.controls {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 2% 0 2%;
   width: 100%;
 }
 
-.controls2 > li {
+.controls > li {
+  list-style: none;
   border: none;
 }

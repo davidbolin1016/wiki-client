@@ -8,14 +8,24 @@ button {
   height: 30px;
 }
 
-li {
+.listed-page {
   list-style: none;
   border: 1px solid black;
   border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  text-align: left;
 }
 
 li:last-child {
   border-bottom: 1px solid black;
+}
+
+.page-list {
+  margin: auto;
+  max-width: 1000px;
+  width: 80%;
 }
 
 section {
@@ -36,4 +46,8 @@ select {
   border-radius: 5px;
   display: block;
   margin: 0 auto;
+}
+
+.edit-or-delete {
+  min-width: 100px;
 }
