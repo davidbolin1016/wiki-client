@@ -1,5 +1,27 @@
+nav {
+  display: flex;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
 nav a {
-  color: black;
-  margin-left: 10px;
-  margin-right: 10px;
+  color: rgb(218, 229, 219);
+}
+
+.controls1 {
+  display: flex;
+}
+
+.controls2 {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.controls2 > li {
+  border: none;
 }
