@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import LogOut from './LogOut';
+import { MemoryRouter } from 'react-router';
+import App from '../App/App';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-    <BrowserRouter>
-      <LogOut />
-    </BrowserRouter>, div);
+    <MemoryRouter initialEntries={['/logout']} initialIndex={0}>
+      <App />
+    </MemoryRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

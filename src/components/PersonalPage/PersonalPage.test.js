@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import PersonalPage from './LandingPage';
+import { MemoryRouter } from 'react-router';
+import App from '../App/App';
+
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-    <BrowserRouter>
-      <PersonalPage />
-    </BrowserRouter>, div);
+    <MemoryRouter initialEntries={['/pages/5']} initialIndex={0} >
+      <App />
+    </MemoryRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

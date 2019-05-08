@@ -36,7 +36,7 @@ export default class NewPage extends React.Component {
         <main role="main">
           <header role="banner">
             <form>
-                <label for="page-title">{this.state.title}</label>
+                <label htmlFor="page-title">{this.state.title}</label>
                 <input type="text" id="page-title" name="title" value={this.state.title} onChange={event => this.changeFields(event)}/>
               <textarea rows="6" cols="50" name="content" value={this.state.content} onChange={event => this.changeFields(event)}></textarea>
             </form>
