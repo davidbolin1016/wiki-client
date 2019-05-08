@@ -28,3 +28,9 @@ nav a {
   list-style: none;
   border: none;
 }
+
+@media only screen and (max-width: 640px) {
+  .hide-too-small {
+    display: none;
+  }
+}
