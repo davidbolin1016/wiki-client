@@ -1,4 +1,8 @@
-
 .save-or-cancel {
   background-color: rgb(195, 226, 207);
+}
+
+.page-input {
+  width: 100%;
+  max-width: none;
 }

@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router';
-import App from '../App/App';
+import LogOut from './LogOut';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
+  const historyMock = { push: jest.fn() };
+
   ReactDOM.render(
-    <MemoryRouter initialEntries={['/logout']} initialIndex={0}>
-      <App />
-    </MemoryRouter>, div);
+        <LogOut history={historyMock}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

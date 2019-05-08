@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router';
-import App from '../App/App';
+
+import EditPage from './EditPage';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-    <MemoryRouter initialEntries={['/edit/1']} initialIndex={0} >
-      <App />
-    </MemoryRouter>, div);
+      <EditPage match={{params: {page: 1}}}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

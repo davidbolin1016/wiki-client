@@ -52,16 +52,16 @@ export default class NewPage extends React.Component {
       <>
         <main role="main">
           <header role="banner">
-          <form>
+            <form className="page-input">
                 <label htmlFor="page-title">{this.state.title}</label>
                 <input type="text" id="page-title" name="title" value={this.state.title} onChange={event => this.changeFields(event)}/>
-              <textarea rows="6" cols="50" name="content" value={this.state.content} onChange={event => this.changeFields(event)}></textarea>
+                <textarea rows="6" cols="50" name="content" value={this.state.content} onChange={event => this.changeFields(event)}></textarea>
             </form>
           </header>
-       <section className="save-or-cancel">
-         <button onClick={this.save}>Save</button>
-       <button onClick={this.cancel}>Cancel</button>
-       </section>
+          <section className="save-or-cancel">
+           <button onClick={this.save}>Save</button>
+           <button onClick={this.cancel}>Cancel</button>
+          </section>
        </main>
       </>
     );
