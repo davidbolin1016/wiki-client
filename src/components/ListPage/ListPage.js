@@ -148,18 +148,6 @@ export default class ListPage extends React.Component {
 
     pageList = pageList.filter(ele => ele.page_name.includes(this.state.filterTerm));
 
-    // const listElements = pageList.map((ele, i) => {
-    //   return (
-    //     <li className="listed-page" key={ele.id}>
-    //       <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
-    //       <div className="edit-or-delete">
-    //         <button disabled={this.context.homepage === `/pages/${ele.id}`} onClick={() => this.handleDelete(ele.id)}>Delete</button>
-    //         <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
-    //       </div>
-    //     </li>
-    //   );
-    // });
-
     return (
      <>
       <main role="main">
@@ -189,9 +177,6 @@ export default class ListPage extends React.Component {
           {this.state.currentlySearching && 'Searching...'}
         </section>
         <section>
-         {/* <ul className="page-list">
-          {listElements}
-        </ul> */}
           <List pageList={pageList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
         </section>
       </main>
