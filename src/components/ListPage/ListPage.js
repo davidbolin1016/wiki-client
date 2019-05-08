@@ -3,6 +3,7 @@ import PageApiService from '../../services/page-api-service';
 import { Link } from 'react-router-dom';
 import './ListPage.css';
 import UserContext from '../../user-context/UserContext';
+import List from '../../components/List/List';
 
 export default class ListPage extends React.Component {
   
@@ -147,17 +148,17 @@ export default class ListPage extends React.Component {
 
     pageList = pageList.filter(ele => ele.page_name.includes(this.state.filterTerm));
 
-    const listElements = pageList.map((ele, i) => {
-      return (
-        <li className="listed-page" key={ele.id}>
-          <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
-          <div className="edit-or-delete">
-            <button disabled={this.context.homepage === `/pages/${ele.id}`} onClick={() => this.handleDelete(ele.id)}>Delete</button>
-            <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
-          </div>
-        </li>
-      );
-    });
+    // const listElements = pageList.map((ele, i) => {
+    //   return (
+    //     <li className="listed-page" key={ele.id}>
+    //       <Link to={'/pages/' + ele.id}>{ele.page_name}</Link>
+    //       <div className="edit-or-delete">
+    //         <button disabled={this.context.homepage === `/pages/${ele.id}`} onClick={() => this.handleDelete(ele.id)}>Delete</button>
+    //         <button onClick={() => this.handleEdit(ele.id)}> Edit </button>
+    //       </div>
+    //     </li>
+    //   );
+    // });
 
     return (
      <>
@@ -188,9 +189,10 @@ export default class ListPage extends React.Component {
           {this.state.currentlySearching && 'Searching...'}
         </section>
         <section>
-         <ul className="page-list">
+         {/* <ul className="page-list">
           {listElements}
-        </ul>
+        </ul> */}
+          <List pageList={pageList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
         </section>
       </main>
    </>
