@@ -1,6 +1,5 @@
 import React from 'react';
 import PageApiService from '../../services/page-api-service';
-import { Link } from 'react-router-dom';
 import './ListPage.css';
 import UserContext from '../../user-context/UserContext';
 import List from '../../components/List/List';

@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component renders as expected when provided with a list of pages 1`] = `
+<ul
+  className="page-list"
+>
+  <li
+    className="listed-page"
+  >
+    <a
+      href="/pages/69"
+      onClick={[Function]}
+    >
+      New Page Thu May 02 2019 10:10:03 GMT-0700 (Pacific Daylight Time)
+    </a>
+    <div
+      className="edit-or-delete"
+    >
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+      >
+         Edit 
+      </button>
+    </div>
+  </li>
+  <li
+    className="listed-page"
+  >
+    <a
+      href="/pages/71"
+      onClick={[Function]}
+    >
+      New Page Thu May 02 2019 11:44:48 GMT-0700 (Pacific Daylight Time)
+    </a>
+    <div
+      className="edit-or-delete"
+    >
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+      >
+         Edit 
+      </button>
+    </div>
+  </li>
+  <li
+    className="listed-page"
+  >
+    <a
+      href="/pages/70"
+      onClick={[Function]}
+    >
+      Testing internal linking
+    </a>
+    <div
+      className="edit-or-delete"
+    >
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+      <button
+        onClick={[Function]}
+      >
+         Edit 
+      </button>
+    </div>
+  </li>
+</ul>
+`;
