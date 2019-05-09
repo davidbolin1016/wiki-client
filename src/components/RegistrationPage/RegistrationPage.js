@@ -30,16 +30,16 @@ export default class RegistrationPage extends React.Component {
   }
 
   changeFields(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+      this.setState({
+        [event.target.name]: event.target.value
+      })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     const history = this.props.history;
     const { username, password, confirm } = this.state;
-    if (password !== confirm) {
+    if (password !== confirm && this._isMounted) {
       this.setState({
         error: 'Password must match confirmation'
       });
@@ -53,7 +53,6 @@ export default class RegistrationPage extends React.Component {
         password: password
       })
       .then(user => {
-        this.setState({ error: '' });
         const { username, password } = this.state;
         AuthApiService.postLogin({
           username: username,
@@ -89,11 +88,11 @@ export default class RegistrationPage extends React.Component {
             <fieldset>
               <legend>Create New Account</legend>
               <label htmlFor="username">New Username:</label>
-              <input type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
+              <input autocomplete="off" type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
               <label htmlFor="password">Password:</label>
-              <input type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
+              <input autoComplete="new-password" type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
               <label htmlFor="confirm">Confirm Password:</label>
-              <input type="password" name="confirm" id="confirm" onChange={event => this.changeFields(event)} />
+              <input autoComplete="off" type="password" name="confirm" id="confirm" onChange={event => this.changeFields(event)} />
               <button className="login-button" onClick={event => this.handleSubmit(event)}>Submit</button>
             </fieldset>
           </form>

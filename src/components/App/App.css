@@ -2,6 +2,10 @@ a {
   color: black;
 }
 
+body {
+  font-size: calc(14px + 6 * ((100vw - 300px) / (1300)));
+}
+
 header {
   padding: 5%;
 }

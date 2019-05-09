@@ -4,8 +4,7 @@
 
 body {
   color: rgb(11, 40, 28);
-  font-family: "Open Sans", sans-serif; 
-  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
   text-align: center;
   line-height: 1.5;
 }
@@ -32,4 +31,8 @@ label {
 
 #page-title {
   margin-bottom: 10px;
+}
+
+.input-fields {
+  font-size: 18px;
 }

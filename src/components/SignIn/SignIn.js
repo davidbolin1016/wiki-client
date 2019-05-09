@@ -50,9 +50,9 @@ export default class SignIn extends React.Component {
             <fieldset>
               <legend>Sign In</legend>
               <label htmlFor="username">Username:</label>
-              <input type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
+              <input autoComplete="username" type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
               <label htmlFor="password">Password:</label>
-              <input type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
+              <input autoComplete="current-password" type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
               <button className="login-button" onClick={event => this.handleSubmit(event)}>Submit</button>
             </fieldset>
           </form>
