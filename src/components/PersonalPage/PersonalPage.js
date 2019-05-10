@@ -66,8 +66,13 @@ export default class PersonalPage extends React.Component {
     for (let i = 1; i < dividedContent.length; i = i + 2) {
       const linkedPageId = dividedContent[i].split('>')[0];
       const linkText = dividedContent[i].slice(linkedPageId.length + 1)
-    
-      const postText = dividedContent[i + 1].slice(2)
+      let postText;
+      if (dividedContent[i + 1]) {
+        postText = dividedContent[i + 1].slice(2);
+      } else {
+        postText = '';
+      }
+       
       
       content.push(
         <Link key={content.length} className="int-link" to={`/pages/${linkedPageId}`}>
