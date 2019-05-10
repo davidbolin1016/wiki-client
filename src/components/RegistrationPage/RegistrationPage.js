@@ -79,7 +79,6 @@ export default class RegistrationPage extends React.Component {
   
   render() {
     return(
-      <>
         <main role="main">
           <header role="banner">
             Automated Personal Wiki
@@ -100,7 +99,6 @@ export default class RegistrationPage extends React.Component {
             {this.state.error}
           </section>
         </main>
-      </>
     );
   }
 }

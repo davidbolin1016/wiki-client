@@ -148,13 +148,12 @@ export default class ListPage extends React.Component {
     pageList = pageList.filter(ele => ele.page_name.includes(this.state.filterTerm));
 
     return (
-     <>
       <main role="main">
         <header role="banner" className="sub-header">
           Pages
         </header>
         <section>
-        Order By
+          Order By
           <select onChange={(event) => this.changeOrder(event)}>
             <option>Most Recently Modified</option>
             <option>Least Recently Modified</option>
@@ -179,7 +178,6 @@ export default class ListPage extends React.Component {
           <List pageList={pageList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
         </section>
       </main>
-   </>
     );
   }
 }

@@ -4,6 +4,6 @@ const UserContext = React.createContext({
   homepage: '/',
   username: null,
   setUser: () => {}
-})
+});
 
-export default UserContext
+export default UserContext;

@@ -32,6 +32,7 @@ export default class PersonalPage extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // fetch new page when we pass from one personal page to another
     const pageId = newProps.match.params.page;
     PageApiService.getPage(pageId)
       .then(page => {
@@ -52,7 +53,8 @@ export default class PersonalPage extends React.Component {
   render() {
     const pageId = this.props.match.params.page;
 
-    //structure will be ...text...<IntLink ##>...text...<IntLink />...text
+    // Look for internal links that require rendering
+    // structure is ...text...<IntLink ##>...text...<IntLink />...text
 
     const dividedContent = this.state.content.split('<IntLink ');
     let content = [
@@ -61,19 +63,17 @@ export default class PersonalPage extends React.Component {
       </Link>
     ];
 
-    //text, ##>text, />text , ##>text, />text etc
-
     for (let i = 1; i < dividedContent.length; i = i + 2) {
       const linkedPageId = dividedContent[i].split('>')[0];
       const linkText = dividedContent[i].slice(linkedPageId.length + 1)
       let postText;
+
       if (dividedContent[i + 1]) {
         postText = dividedContent[i + 1].slice(2);
       } else {
         postText = '';
       }
        
-      
       content.push(
         <Link key={content.length} className="int-link" to={`/pages/${linkedPageId}`}>
           {linkText}
@@ -83,9 +83,9 @@ export default class PersonalPage extends React.Component {
         </Link>
       );  
     }
+
     if (!this.state.error) {
       return(
-        <>
           <main role="main">
             <header className="sub-header" role="banner">
               <Link to={`/edit/${pageId}`}>
@@ -93,14 +93,12 @@ export default class PersonalPage extends React.Component {
               </Link> 
             </header>
             <section className="page-content">
-                {content}
+              {content}
             </section>
           </main>
-        </>
       );
     } else {
       return(
-        <>
           <main role="main">
             <header role="banner">
               <Link to={`${this.context.homepage}`}>
@@ -108,7 +106,6 @@ export default class PersonalPage extends React.Component {
               </Link>
             </header>
           </main>
-        </>
       );
     }
   }

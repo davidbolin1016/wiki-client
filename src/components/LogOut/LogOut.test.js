@@ -7,6 +7,6 @@ it('renders without crashing', () => {
   const historyMock = { push: jest.fn() };
 
   ReactDOM.render(
-        <LogOut history={historyMock}/>, div);
+    <LogOut history={historyMock}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -41,7 +41,6 @@ export default class SignIn extends React.Component {
   
   render() {
     return(
-      <>
         <main role="main">
           <header role="banner">
             Automated Personal Wiki
@@ -60,7 +59,6 @@ export default class SignIn extends React.Component {
             {this.state.error}
           </section>
         </main>
-      </>
     );
   }
 }

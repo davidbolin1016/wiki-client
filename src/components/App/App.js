@@ -28,6 +28,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    // ensure that if we have a jwt we also have username and homepage
     AuthApiService.whoamI()
       .then(user => {
         if (this.state.username !== user.username) {

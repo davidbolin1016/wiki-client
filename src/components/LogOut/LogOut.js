@@ -13,6 +13,7 @@ export default class LogOut extends React.Component {
   }
   
   render() {
+    // this component simply redirects to landing page so no need to return any content
     return <div></div>;
   }
 }
