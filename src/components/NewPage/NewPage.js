@@ -19,7 +19,6 @@ export default class NewPage extends React.Component {
       page_content: this.state.content
     })
       .then((res) => {
-        console.log(res);
         this.props.history.push(`/pages/${res.page_id}`);
       });
   }

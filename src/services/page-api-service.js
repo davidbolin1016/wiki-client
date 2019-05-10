@@ -62,13 +62,11 @@ const PageApiService = {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }})
       .then(res => {
-        console.log(res);
         return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res }
       );
   },
 
   updatePage(id, updates) {
-    console.log(id, updates);
     return fetch(`${config.API_ENDPOINT}/pages/${id}`, {
       method: 'PATCH',
       headers: {
@@ -78,7 +76,6 @@ const PageApiService = {
       body: JSON.stringify(updates)
     })
       .then(res => {
-        console.log(res);
         return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res });
   }
 }
