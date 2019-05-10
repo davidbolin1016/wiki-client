@@ -6,7 +6,7 @@ A React app to help make connections between ideas, projects, tasks, and the lik
 
 ## Live app
 
-The app is live at [https://wiki-app.davidbolin1016.now.sh/].
+The app is live [here](https://wiki-app.davidbolin1016.now.sh/).
 
 ## Screenshots
 [Screen Clip](screenshots/ScreenClip.png)
