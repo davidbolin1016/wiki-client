@@ -1,8 +1,24 @@
 # Automated Personal Wiki
 
-An app to aid in linking between ideas, projects, tasks, and so on. A tool to create a personal wiki where the title of each page becomes a link from equivalent text on other pages.
+## Summary
+A React app to help make connections between ideas, projects, tasks, and the like. The user creates a personal wiki. The app will automatically create links whereever the text on one page matches the title of another page. This will happen even retroactively, when the title to be linked is created after the original page.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Live app
+
+The app is live at [https://wiki-app.davidbolin1016.now.sh/].
+
+## Screenshots
+<img src="./screenshots/ScreenClip.png>
+
+<img src="./screenshots/ScreenClip2.png>
+
+## Tech stack
+
+The client uses CSS3 and JavaScript ES6 together with React.
+
+The server is also in JavaScript (at [https://github.com/davidbolin1016/wiki-server]) and uses Express, as well as PostgreSQL for the database.
+
 
 ## Available Scripts
 
