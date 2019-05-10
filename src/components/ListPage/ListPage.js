@@ -145,7 +145,8 @@ export default class ListPage extends React.Component {
       });
     }   
 
-    pageList = pageList.filter(ele => ele.page_name.includes(this.state.filterTerm));
+    console.log(this.state.filterTerm);
+    pageList = pageList.filter(ele => ele.page_name.toLowerCase().includes(this.state.filterTerm.toLowerCase()));
 
     return (
       <main role="main">
