@@ -28,3 +28,7 @@ UserContext creates a context with username and homepage id so that the app can 
 The services folder contains files for communicating with the server, whether for login or for retreiving or posting information to or from the server.
 
 The components folder contains files creating React components for the main app (App), each distinct page (EditPage, LandingPage, ListPage, NotFound, PersonalPage, RegistrationPage, SignIn), as well as several reusable components (NavBar, Emoji, List).
+
+## API documentation
+
+API documentation can be found at the [repo for the server.](https://github.com/davidbolin1016/wiki-server) 
