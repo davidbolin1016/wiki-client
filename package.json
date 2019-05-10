@@ -12,7 +12,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "now --name wiki-app ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +33,6 @@
   },
   "devDependencies": {
     "react-test-renderer": "^16.8.6"
-  }
+  },
+  "homepage": "https://wiki-app.davidbolin1016.now.sh"
 }

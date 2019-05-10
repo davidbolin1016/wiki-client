@@ -88,7 +88,7 @@ export default class RegistrationPage extends React.Component {
             <fieldset>
               <legend>Create New Account</legend>
               <label htmlFor="username">New Username:</label>
-              <input autocomplete="off" type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
+              <input autoComplete="off" type="text" name="username" id="username" onChange={event => this.changeFields(event)} />
               <label htmlFor="password">Password:</label>
               <input autoComplete="new-password" type="password" name="password" id="password" onChange={event => this.changeFields(event)} />
               <label htmlFor="confirm">Confirm Password:</label>
